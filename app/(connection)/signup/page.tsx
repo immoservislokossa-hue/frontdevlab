@@ -149,8 +149,7 @@ export default function SignupPage() {
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
-              <p className="text-xs text-gray-500">Le mot de passe doit contenir au moins 6 caractères</p>
-            </div>
+                </div>
 
             <button
               type="submit"
@@ -189,17 +188,10 @@ export default function SignupPage() {
             </p>
           </div>
 
-          <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-100">
-            <p className="text-xs text-blue-700 text-center">
-              Après création, vous serez redirigé automatiquement vers votre historique
-            </p>
-          </div>
+        
         </div>
 
-        {/* Footer */}
-        <div className="mt-8 text-center">
-       
-        </div>
+        
       </div>
     </div>
   )

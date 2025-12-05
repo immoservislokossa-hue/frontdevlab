@@ -40,11 +40,11 @@ export default function RetraitesPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center  bg-white  justify-center p-4">
       <div className="w-full max-w-md bg-white p-6 rounded-lg shadow">
         <h1 className="text-xl font-bold mb-4">Compléter profil</h1>
         
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 text-gray-900">
           <select 
             value={form.type} 
             onChange={e => setForm({...form, type: e.target.value})}
@@ -63,16 +63,16 @@ export default function RetraitesPage() {
             placeholder="Identifiant"
             value={form.identifiant}
             onChange={e => setForm({...form, identifiant: e.target.value})}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded text-gray-500"
             required
           />
           
           <input
             type="tel"
-            placeholder="Numéro (ex: +33612345678)"
+            placeholder="Numéro (ex: +229612345678)"
             value={form.numero}
             onChange={e => setForm({...form, numero: e.target.value})}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded text-gray-500"
             required
           />
           
@@ -85,7 +85,7 @@ export default function RetraitesPage() {
           </button>
         </form>
         
-        {message && <p className="mt-4 text-center">{message}</p>}
+        {message && <p className="mt-4 text-center text-red-500">{message}</p>}
       </div>
     </div>
   )

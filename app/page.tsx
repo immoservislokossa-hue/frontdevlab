@@ -28,201 +28,180 @@ import Header from "./components/layout/Header";
 
 export default function Home() {
   return (
-    <main className="w-full min-h-screen bg-gradient-to-br from-white via-blue-50 to-white">
+    <main className="w-full min-h-screen bg-[#fafafa]">
       <Header />
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden py-24 px-6 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800">
-        <div className="absolute inset-0 bg-grid-white/10 [mask-image:linear-gradient(0deg,transparent,black)]"></div>
-        <div className="relative max-w-6xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-8">
-            <ShieldCheck className="w-4 h-4 text-white" />
-            <span className="text-sm font-semibold text-white">Service Officiel du Gouvernement Béninois</span>
-          </div>
-          
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            Pension<span className="text-blue-200">Pay</span>
-            <span className="block text-2xl md:text-3xl font-normal text-blue-100 mt-4">
-              Votre pension, payée avec simplicité et sécurité
-            </span>
-          </h1>
-          
-          <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto mb-10 leading-relaxed">
-            PensionPay est la plateforme gouvernementale qui garantit le versement rapide et sécurisé 
-            de votre pension de retraite. Plus besoin de faire la queue : recevez vos paiements 
-            directement sur votre compte, avec un suivi en temps réel.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a
-              href="/signup"
-              className="group px-8 py-4 bg-white text-blue-700 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl shadow-lg flex items-center justify-center gap-3 text-lg"
-            >
-              <Shield className="w-5 h-5" />
-              <span>Accéder à mon espace retraité</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a
-              href="#help"
-              className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 flex items-center gap-3"
-            >
-              <HelpCircle className="w-5 h-5" />
-              <span>Besoin d'aide ?</span>
-            </a>
-          </div>
-          
-          {/* Avantages pour retraités */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-12 border-t border-white/20">
-            <div className="text-center p-4 bg-white/5 rounded-lg">
-              <Clock className="w-8 h-8 text-blue-200 mx-auto mb-3" />
-              <div className="text-lg font-bold text-white mb-1">Paiement ponctuel</div>
-              <div className="text-sm text-blue-200">À date fixe chaque mois</div>
+      {/* Hero Section avec image */}
+      <section className="relative overflow-hidden py-16 md:py-24 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+            {/* Texte à gauche */}
+            <div className="lg:w-1/2">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-700 rounded-full mb-8">
+                <ShieldCheck className="w-4 h-4" />
+                <span className="text-sm font-semibold">Service Officiel du Gouvernement Béninois</span>
+              </div>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-600  mb-6 leading-tight">
+                PensiPay
+                <span className="block text-xl md:text-2xl lg:text-3xl font-normal text-gray-600 mt-4">
+                  Votre pension, simplifiée et sécurisée
+                </span>
+              </h1>
+              
+              <p className="text-lg text-gray-700 max-w-2xl mb-10 leading-relaxed">
+                La plateforme gouvernementale qui révolutionne le versement des pensions au Bénin. 
+                Plus de files d'attente, plus de paperasse. Recevez votre pension directement 
+                sur votre compte avec une transparence totale.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="/signup"
+                  className="group px-8 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl shadow-md flex items-center justify-center gap-3 text-lg"
+                >
+                 
+                  <span>Accéder à mon espace</span>
+                 
+                </a>
+                <a
+                  href="#help"
+                  className="px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 border-2 border-blue-600 flex items-center justify-center gap-3"
+                >
+                 
+                  <span>Découvrir comment ça marche</span>
+                </a>
+              </div>
+
+           
             </div>
-            <div className="text-center p-4 bg-white/5 rounded-lg">
-              <ShieldCheck className="w-8 h-8 text-blue-200 mx-auto mb-3" />
-              <div className="text-lg font-bold text-white mb-1">100% Sécurisé</div>
-              <div className="text-sm text-blue-200">Protection gouvernementale</div>
-            </div>
-            <div className="text-center p-4 bg-white/5 rounded-lg">
-              <Bell className="w-8 h-8 text-blue-200 mx-auto mb-3" />
-              <div className="text-lg font-bold text-white mb-1">Notifications</div>
-              <div className="text-sm text-blue-200">SMS à chaque versement</div>
-            </div>
-            <div className="text-center p-4 bg-white/5 rounded-lg">
-              <MessageCircle className="w-8 h-8 text-blue-200 mx-auto mb-3" />
-              <div className="text-lg font-bold text-white mb-1">Support dédié</div>
-              <div className="text-sm text-blue-200">Assistance téléphonique</div>
+
+            {/* Image à droite */}
+            <div className="lg:w-1/2 relative">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-100 to-blue-50 rounded-3xl transform rotate-3"></div>
+                <div className="relative bg-white rounded-2xl overflow-hidden shadow-2xl border border-blue-100">
+                  <img 
+                    src="/hero.png" 
+                    alt="Retraité béninois utilisant PensionPay" 
+                    className="w-full h-auto object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-600/90 to-transparent p-6">
+                   
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Comment ça marche pour vous */}
+      {/* Comment ça marche */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
+            <div className="inline-block px-6 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-semibold mb-4">
+              SIMPLE ET EFFICACE
+            </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Comment <span className="text-blue-600">PensionPay</span> fonctionne pour vous ?
+              Comment <span className="text-blue-600">ça marche</span> ?
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Une démarche simple et sécurisée pour recevoir votre pension sans souci
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Trois étapes simples pour recevoir votre pension en toute tranquillité
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                step: "1",
+                step: "01",
                 icon: <FileText className="w-8 h-8" />,
-                title: "Inscription simple",
-                description: "Créez votre compte en ligne ou rendez-vous dans un centre agréé avec vos documents. Notre équipe vous accompagne dans la démarche."
+                title: "Inscription",
+                description: "Créez votre compte en ligne ou dans un centre agréé avec vos documents d'identité.",
+                color: "from-blue-500 to-blue-600"
               },
               {
-                step: "2",
+                step: "02",
                 icon: <Smartphone className="w-8 h-8" />,
-                title: "Accès facile",
-                description: "Connectez-vous avec votre identifiant sécurisé. Vous pouvez accéder à votre espace depuis votre téléphone ou ordinateur."
+                title: "Validation",
+                description: "Notre équipe valide votre dossier sous 48h et active votre compte.",
+                color: "from-blue-600 to-blue-700"
               },
               {
-                step: "3",
+                step: "03",
                 icon: <Banknote className="w-8 h-8" />,
-                title: "Suivi et paiement",
-                description: "Consultez votre solde, l'historique des versements et recevez des alertes à chaque paiement effectué."
+                title: "Reception",
+                description: "Recevez votre pension chaque mois avec notification immédiate.",
+                color: "from-blue-700 to-blue-800"
               }
             ].map((step, index) => (
               <div 
                 key={index}
-                className="relative group p-8 bg-white rounded-2xl border border-blue-100 hover:border-blue-300 hover:shadow-xl transition-all duration-300"
+                className="relative group"
               >
-                <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg">
-                  {step.step}
+                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
+                  <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${step.color} text-white flex items-center justify-center font-bold text-xl shadow-lg`}>
+                    {step.step}
+                  </div>
                 </div>
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-blue-50 text-blue-600 mb-6">
-                  {step.icon}
+                <div className="pt-10 p-8 bg-white rounded-2xl border border-gray-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br ${step.color} text-white mb-6`}>
+                    {step.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>
+                  <p className="text-gray-600">{step.description}</p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Vos avantages */}
-      <section className="py-20 px-6 bg-blue-50">
+      {/* Avantages */}
+      <section className="py-20 px-6 bg-[#fafafa]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-4">
-              <Heart className="w-4 h-4" />
-              <span>Conçu pour les retraités</span>
-            </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Les <span className="text-blue-600">avantages</span> de PensionPay
+              Pourquoi choisir <span className="text-blue-600">PensiPay</span> ?
             </h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Colonne gauche */}
-            <div className="space-y-6">
-              <div className="bg-white p-6 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
-                    <Clock className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">Gain de temps</h3>
-                    <p className="text-gray-600">
-                      Fini les longues attentes aux guichets. Votre pension est versée automatiquement chaque mois.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-white p-6 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">Sécurité maximale</h3>
-                    <p className="text-gray-600">
-                      Service gouvernemental garanti. Vos données et votre argent sont protégés par les plus hauts standards de sécurité.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Colonne droite */}
-            <div className="space-y-6">
-              <div className="bg-white p-6 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
-                    <Bell className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">Informé en temps réel</h3>
-                    <p className="text-gray-600">
-                      Recevez un SMS ou un email dès que votre pension est versée. Consultez votre historique à tout moment.
-                    </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: <Clock className="w-6 h-6" />,
+                title: "Gain de temps",
+                description: "Fini les attentes interminables aux guichets"
+              },
+              {
+                icon: <Shield className="w-6 h-6" />,
+                title: "Sécurité garantie",
+                description: "Service gouvernemental certifié et sécurisé"
+              },
+              {
+                icon: <Bell className="w-6 h-6" />,
+                title: "Notifications",
+                description: "Alertes instantanées à chaque versement"
+              },
+              {
+                icon: <MessageCircle className="w-6 h-6" />,
+                title: "Support 7j/7",
+                description: "Assistance dédiée aux retraités"
+              }
+            ].map((advantage, index) => (
+              <div 
+                key={index}
+                className="bg-white p-6 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center mb-4">
+                  <div className="text-blue-600">
+                    {advantage.icon}
                   </div>
                 </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{advantage.title}</h3>
+                <p className="text-gray-600 text-sm">{advantage.description}</p>
               </div>
-              
-              <div className="bg-white p-6 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
-                    <HelpCircle className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">Support dédié</h3>
-                    <p className="text-gray-600">
-                      Une équipe d'assistance est disponible pour vous aider par téléphone ou dans nos centres d'accueil.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -230,162 +209,169 @@ export default function Home() {
       {/* Espace Personnel */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Votre <span className="text-blue-600">espace personnel</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Tout ce dont vous avez besoin pour gérer votre pension en un seul endroit
-            </p>
-          </div>
-          
-          <div className="bg-blue-50 rounded-2xl p-8 md:p-12 border border-blue-100">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Fonctionnalités principales</h3>
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
-                    <span className="text-gray-700"><strong>Consultation du solde :</strong> Vérifiez le montant de votre pension disponible</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
-                    <span className="text-gray-700"><strong>Historique complet :</strong> Tous vos versements depuis le début</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
-                    <span className="text-gray-700"><strong>Documents officiels :</strong> Téléchargez vos attestations et reçus</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
-                    <span className="text-gray-700"><strong>Alertes personnalisées :</strong> Choisissez comment être informé</span>
-                  </li>
-                </ul>
-              </div>
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <div className="lg:w-1/2">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Votre espace <span className="text-blue-600">personnalisé</span>
+              </h2>
+              <p className="text-lg text-gray-600 mb-8">
+                Gérez votre pension en toute simplicité depuis votre tableau de bord personnel
+              </p>
               
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-blue-100">
-                <h4 className="text-lg font-bold text-gray-900 mb-4">Accès facile</h4>
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-center gap-3 text-gray-700">
-                    <Smartphone className="w-5 h-5 text-blue-600" />
-                    <span>Depuis votre téléphone mobile</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-gray-700">
-                    <Globe className="w-5 h-5 text-blue-600" />
-                    <span>Sur le site internet PensionPay</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-gray-700">
-                    <Building className="w-5 h-5 text-blue-600" />
-                    <span>Dans nos centres d'accueil agréés</span>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <CheckCircle className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-1">Solde en temps réel</h4>
+                    <p className="text-gray-600">Consultez votre solde disponible à tout moment</p>
                   </div>
                 </div>
                 
+                <div className="flex items-start gap-4">
+                  <CheckCircle className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-1">Historique détaillé</h4>
+                    <p className="text-gray-600">Tous vos versements depuis le début</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <CheckCircle className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-1">Documents en ligne</h4>
+                    <p className="text-gray-600">Téléchargez vos attestations et reçus</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-8">
                 <a
                   href="#connect"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
                 >
-                  <Shield className="w-4 h-4" />
-                  Accéder à mon compte
+                  <Smartphone className="w-4 h-4" />
+                  Découvrir l'application mobile
                 </a>
+              </div>
+            </div>
+            
+            <div className="lg:w-1/2">
+              <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 border border-blue-100 shadow-lg">
+                <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <div className="text-sm text-gray-500">Solde disponible</div>
+                      <div className="text-2xl font-bold text-gray-900">450 000 FCFA</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-sm text-gray-500">Prochain versement</div>
+                      <div className="font-bold text-green-600">30 Nov 2024</div>
+                    </div>
+                  </div>
+                  <div className="h-2 bg-blue-100 rounded-full overflow-hidden">
+                    <div className="h-full bg-blue-600 w-3/4"></div>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <h4 className="font-bold text-gray-900">Derniers versements</h4>
+                  {[
+                    { month: "Octobre 2024", amount: "450 000 FCFA", status: "Payé" },
+                    { month: "Septembre 2024", amount: "450 000 FCFA", status: "Payé" },
+                    { month: "Août 2024", amount: "450 000 FCFA", status: "Payé" }
+                  ].map((payment, index) => (
+                    <div key={index} className="flex items-center justify-between p-3 bg-white rounded-lg">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
+                          <Banknote className="w-4 h-4 text-blue-600" />
+                        </div>
+                        <div>
+                          <div className="font-medium text-gray-900">{payment.month}</div>
+                          <div className="text-sm text-gray-500">Pension de retraite</div>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-bold text-gray-900">{payment.amount}</div>
+                        <div className="text-sm text-green-600">{payment.status}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ & Contact */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* FAQ */}
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Questions fréquentes</h3>
-              <div className="space-y-4">
-                {[
-                  {
-                    q: "Comment créer mon compte PensionPay ?",
-                    a: "Rendez-vous sur notre site ou dans un centre agréé avec votre carte d'identité et votre numéro de retraité."
-                  },
-                  {
-                    q: "Quand vais-je recevoir ma pension ?",
-                    a: "Les versements sont effectués systématiquement le dernier jour ouvrable du mois."
-                  },
-                  {
-                    q: "Comment signaler un problème de paiement ?",
-                    a: "Contactez notre service assistance au 8000 00 00 (gratuit) ou rendez-vous dans un centre d'accueil."
-                  }
-                ].map((faq, index) => (
-                  <div key={index} className="bg-white p-4 rounded-lg border border-blue-100 hover:border-blue-300 transition-colors">
-                    <h4 className="font-semibold text-gray-900 mb-2">{faq.q}</h4>
-                    <p className="text-gray-600 text-sm">{faq.a}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Contact */}
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Besoin d'aide ? Contactez-nous</h3>
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-blue-100">
-                <div className="space-y-6">
-                  <div className="flex items-start gap-3">
-                    <Phone className="w-5 h-5 text-blue-600 mt-1" />
-                    <div>
-                      <div className="font-semibold text-gray-900">Assistance téléphonique</div>
-                      <div className="text-gray-600">8000 00 00 (appel gratuit)</div>
-                      <div className="text-sm text-blue-500">Lundi au vendredi, 8h-18h</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <Mail className="w-5 h-5 text-blue-600 mt-1" />
-                    <div>
-                      <div className="font-semibold text-gray-900">Email</div>
-                      <div className="text-gray-600">assistance@pensionpay.bj</div>
-                      <div className="text-sm text-blue-500">Réponse sous 24h ouvrées</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-blue-600 mt-1" />
-                    <div>
-                      <div className="font-semibold text-gray-900">Centres d'accueil</div>
-                      <div className="text-gray-600">Dans toutes les préfectures du Bénin</div>
-                      <div className="text-sm text-blue-500">Trouvez le centre le plus proche de chez vous</div>
-                    </div>
-                  </div>
-                  
-                  <a
-                    href="/centers"
-                    className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 bg-blue-50 text-blue-700 rounded-lg font-semibold hover:bg-blue-100 transition-colors"
-                  >
-                    <MapPin className="w-4 h-4" />
-                    Trouver un centre près de chez moi
-                  </a>
+      {/* FAQ */}
+      <section className="py-20 px-6 bg-[#fafafa]">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Questions <span className="text-blue-600">fréquentes</span>
+            </h2>
+          </div>
+          
+          <div className="space-y-4">
+            {[
+              {
+                q: "Comment m'inscrire à PensionPay ?",
+                a: "Rendez-vous sur notre site internet ou dans l'un de nos centres agréés avec votre carte d'identité nationale et votre numéro de retraité. Notre équipe vous accompagnera dans toute la démarche."
+              },
+              {
+                q: "Le service est-il vraiment gratuit ?",
+                a: "Oui, PensionPay est un service entièrement gratuit offert par le Gouvernement Béninois à tous les retraités. Aucun frais n'est prélevé sur vos versements."
+              },
+              {
+                q: "Puis-je utiliser PensionPay si je ne suis pas à l'aise avec la technologie ?",
+                a: "Absolument ! Nos centres d'accueil sont là pour vous accompagner. De plus, l'interface a été spécialement conçue pour être simple et intuitive."
+              },
+              {
+                q: "Comment être sûr de la sécurité de mes données ?",
+                a: "PensionPay utilise les mêmes standards de sécurité que les banques et institutions gouvernementales. Vos données sont cryptées et protégées conformément aux lois béninoises."
+              }
+            ].map((faq, index) => (
+              <div 
+                key={index}
+                className="bg-white rounded-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 overflow-hidden"
+              >
+                <div className="p-6">
+                  <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-3">
+                    <HelpCircle className="w-5 h-5 text-blue-600" />
+                    {faq.q}
+                  </h3>
+                  <p className="text-gray-600 pl-8">{faq.a}</p>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 bg-blue-900 text-white">
+      <footer className="py-12 px-6 bg-white border-t border-gray-200">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <ShieldCheck className="w-8 h-8 text-blue-300" />
-              <h3 className="text-2xl font-bold">PensionPay</h3>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center">
+                <ShieldCheck className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900">PensionPay</h3>
+                <p className="text-gray-600">Service Gouvernemental</p>
+              </div>
             </div>
-            <p className="text-blue-200 max-w-2xl mx-auto">
-              Service officiel du Gouvernement Béninois pour le paiement sécurisé des pensions de retraite.
-              Votre sécurité, notre priorité.
-            </p>
+            
+            <div className="flex gap-6">
+              <a href="#" className="text-gray-600 hover:text-blue-600">Mentions légales</a>
+              <a href="#" className="text-gray-600 hover:text-blue-600">Confidentialité</a>
+              <a href="#" className="text-gray-600 hover:text-blue-600">Accessibilité</a>
+            </div>
           </div>
           
-          <div className="pt-8 border-t border-blue-700 text-center text-sm text-blue-300">
-            <p>© 2025 PensionPay - République du Bénin</p>
-            <p className="mt-2">Service gratuit pour tous les retraités béninois</p>
+          <div className="pt-8 border-t border-gray-200 text-center">
+            <p className="text-gray-600">© 2025 PensionPay - République du Bénin. Tous droits réservés.</p>
+            <p className="text-gray-500 text-sm mt-2">Service gratuit pour tous les retraités béninois</p>
           </div>
         </div>
       </footer>

@@ -1,119 +1,114 @@
-"use client";
+'use client';
+import { useState, FormEvent } from 'react';
 
-import { useState } from "react";
+export default function Home() {
+  const [status, setStatus] = useState<'idle' | 'uploading' | 'success' | 'error'>('idle'); // idle, uploading, success, error
+  const [message, setMessage] = useState<string>('');
 
-export default function BulkUploadPage() {
-  const [file, setFile] = useState<File | null>(null);
-  const [loadingZip, setLoadingZip] = useState(false);
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const fileInput = form.elements.namedItem('file') as HTMLInputElement;
+    const file = fileInput.files?.[0];
+    
+    if (!file) return;
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setFile(e.target.files[0]);
-    }
-  };
-
-  const handleUpload = async () => {
-    if (!file) {
-      alert("Sélectionne un fichier CSV.");
-      return;
-    }
+    setStatus('uploading');
+    setMessage('Envoi du fichier en cours vers la VM (20.199.136.163)...');
 
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append('file', file);
 
-    const res = await fetch("http://localhost:8000/upload", {
-      method: "POST",
-      body: formData,
-    });
-
-    if (!res.ok) {
-      alert("Erreur côté backend Python");
-      return;
-    }
-
-    const data = await res.json();
-    console.log("Réponse backend :", data);
-    alert("Upload réussi !");
-  };
-
-  const handleDownloadZip = async () => {
     try {
-      setLoadingZip(true);
-
-      const res = await fetch("http://localhost:8000/download-zip", {
-        method: "GET",
+      // On passe par notre API route locale pour éviter les problèmes de CORS
+      const response = await fetch('/api/run-test', {
+        method: 'POST',
+        body: formData,
       });
 
-      if (!res.ok) {
-        alert("Erreur lors de la récupération du ZIP.");
-        setLoadingZip(false);
-        return;
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Erreur lors du transfert');
       }
 
-      const blob = await res.blob();
-
-      // Création d’un lien temporaire pour déclencher le téléchargement
+      // Téléchargement du ZIP
+      const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-
-      link.href = url;
-      link.download = "data.zip"; // Nom du fichier qui sera téléchargé
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `rapport_mojaloop_${new Date().getTime()}.zip`;
+      document.body.appendChild(a);
+      a.click();
       window.URL.revokeObjectURL(url);
-      setLoadingZip(false);
-    } catch (err) {
-      console.error(err);
-      alert("Impossible de télécharger le ZIP.");
-      setLoadingZip(false);
+
+      setStatus('success');
+      setMessage('✅ Test terminé avec succès ! Le rapport a été téléchargé.');
+    } catch (error: any) {
+      console.error(error);
+      setStatus('error');
+      setMessage('❌ Erreur: ' + error.message);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-      <div className="bg-white shadow-lg rounded-xl p-8 w-full max-w-md border border-gray-200">
+    <main className="flex min-h-screen flex-col items-center justify-center p-8 bg-gray-50">
+      <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-lg border border-gray-100">
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-blue-700 mb-2">Mojaloop Load Test</h1>
+          <p className="text-gray-500">Interface de contrôle VM (20.199.136.163)</p>
+        </div>
         
-        <h1 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
-          Upload & Download
-        </h1>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">
+              Fichier CSV de transactions
+            </label>
+            <div className="flex items-center justify-center w-full">
+              <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-blue-300 border-dashed rounded-lg cursor-pointer bg-blue-50 hover:bg-blue-100 transition-colors">
+                <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                  <svg className="w-8 h-8 mb-4 text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                  </svg>
+                  <p className="text-sm text-gray-500"><span className="font-semibold">Cliquez pour upload</span> ou glissez le fichier</p>
+                  <p className="text-xs text-gray-500">CSV uniquement</p>
+                </div>
+                <input type="file" name="file" accept=".csv" required className="hidden" />
+              </label>
+            </div>
+          </div>
 
-        <label
-          htmlFor="csvFile"
-          className="block mb-3 text-gray-700 font-medium"
-        >
-          Sélectionne ton fichier CSV :
-        </label>
+          <button
+            type="submit"
+            disabled={status === 'uploading'}
+            className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white transition-all
+              ${status === 'uploading' 
+                ? 'bg-gray-400 cursor-not-allowed' 
+                : 'bg-blue-600 hover:bg-blue-700 hover:shadow-md active:scale-95'}`}
+          >
+            {status === 'uploading' ? (
+              <span className="flex items-center">
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Traitement en cours...
+              </span>
+            ) : 'Lancer le Test'}
+          </button>
+        </form>
 
-        <input
-          id="csvFile"
-          type="file"
-          accept=".csv"
-          onChange={handleFileChange}
-          className="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 mb-6"
-        />
-
-        <button
-          onClick={handleUpload}
-          className="w-full py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition shadow-sm mb-4"
-        >
-          Envoyer le fichier
-        </button>
-
-        <button
-          onClick={handleDownloadZip}
-          className="w-full py-3 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition shadow-sm"
-        >
-          {loadingZip ? "Téléchargement..." : "Télécharger le ZIP"}
-        </button>
-
-        {file && (
-          <p className="text-sm text-gray-600 mt-4 text-center">
-            Fichier sélectionné : <span className="font-medium">{file.name}</span>
-          </p>
+        {message && (
+          <div className={`mt-6 p-4 rounded-lg border ${
+            status === 'error' 
+              ? 'bg-red-50 border-red-200 text-red-700' 
+              : status === 'success'
+                ? 'bg-green-50 border-green-200 text-green-700'
+                : 'bg-blue-50 border-blue-200 text-blue-700'
+          }`}>
+            <p className="text-center font-medium">{message}</p>
+          </div>
         )}
       </div>
-    </div>
+    </main>
   );
 }
