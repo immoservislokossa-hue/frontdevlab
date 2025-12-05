@@ -34,16 +34,16 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
         {/* Navigation Desktop */}
         <nav className="hidden md:flex items-center gap-6">
           <a 
-            href="#connect" 
+            href="/login" 
             className="hover:text-yellow-300 transition-colors duration-200 text-lg font-medium"
           >
             Se connecter
           </a>
           <a 
-            href="#balance" 
+            href="/login" 
             className="hover:text-yellow-300 transition-colors duration-200 text-lg font-medium"
           >
-            Consulter mon solde
+           S'inscrire
           </a>
         </nav>
 
@@ -62,18 +62,18 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
         <div className="md:hidden mt-4 pb-3 border-t border-blue-600 pt-4">
           <div className="flex flex-col gap-4 px-4">
             <a 
-              href="#connect" 
+              href="/login" 
               className="hover:text-yellow-300 transition-colors duration-200 text-lg font-medium py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Se connecter
             </a>
             <a 
-              href="#balance" 
+              href="/signup" 
               className="hover:text-yellow-300 transition-colors duration-200 text-lg font-medium py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Consulter mon solde
+              S'inscrire
             </a>
           </div>
         </div>

@@ -25,10 +25,7 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
             {/* Texte à gauche */}
             <div className="lg:w-1/2 w-full">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-blue-50 text-blue-700 rounded-full mb-6 md:mb-8">
-                <ShieldCheck className="w-3 h-3 md:w-4 md:h-4" />
-                <span className="text-xs md:text-sm font-semibold">Service Officiel du Gouvernement Béninois</span>
-              </div>
+              
               
               <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-600 mb-4 md:mb-6 leading-tight">
                 PensiPay
@@ -225,11 +222,11 @@ export default function Home() {
               
               <div className="mt-6 md:mt-8">
                 <a
-                  href="#connect"
+                  href="/login"
                   className="inline-flex items-center gap-2 px-4 py-2.5 md:px-6 md:py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors text-sm md:text-base"
                 >
                   <Smartphone className="w-3 h-3 md:w-4 md:h-4" />
-                  Découvrir l'application mobile
+                  Découvrir le projet PensiPay
                 </a>
               </div>
             </div>
@@ -244,7 +241,7 @@ export default function Home() {
                     </div>
                     <div className="text-left sm:text-right">
                       <div className="text-xs md:text-sm text-gray-500">Prochain versement</div>
-                      <div className="font-bold text-green-600 text-sm md:text-base">30 Nov 2024</div>
+                      <div className="font-bold text-green-600 text-sm md:text-base">30 Nov 2025</div>
                     </div>
                   </div>
                   <div className="h-2 bg-blue-100 rounded-full overflow-hidden">
@@ -255,9 +252,9 @@ export default function Home() {
                 <div className="space-y-3 md:space-y-4">
                   <h4 className="font-bold text-gray-900 text-base md:text-lg">Derniers versements</h4>
                   {[
-                    { month: "Octobre 2024", amount: "450 000 FCFA", status: "Payé" },
-                    { month: "Septembre 2024", amount: "450 000 FCFA", status: "Payé" },
-                    { month: "Août 2024", amount: "450 000 FCFA", status: "Payé" }
+                    { month: "Octobre 2025", amount: "450 000 FCFA", status: "Payé" },
+                    { month: "Septembre 2025", amount: "450 000 FCFA", status: "Payé" },
+                    { month: "Août 2025", amount: "450 000 FCFA", status: "Payé" }
                   ].map((payment, index) => (
                     <div key={index} className="flex items-center justify-between p-2 md:p-3 bg-white rounded-lg">
                       <div className="flex items-center gap-2 md:gap-3">
@@ -330,22 +327,16 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-8 md:py-12 px-4 sm:px-6 lg:px-8 bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 mb-6 md:mb-8">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-blue-600 flex items-center justify-center">
-                <ShieldCheck className="w-5 h-5 md:w-6 md:h-6 text-white" />
-              </div>
+          <div className="  justify-between items-center gap-6 md:gap-8 mb-6 md:mb-8">
+            <div className="flex items-center text-center gap-3">
+              
               <div>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900">PensionPay</h3>
-                <p className="text-gray-600 text-sm">Service Gouvernemental</p>
+                <h3 className="text-xl md:text-2xl font-bold   text-gray-900">PensiPay</h3>
+          
               </div>
             </div>
             
-            <div className="flex gap-4 md:gap-6 flex-wrap justify-center">
-              <a href="#" className="text-gray-600 hover:text-blue-600 text-sm md:text-base">Mentions légales</a>
-              <a href="#" className="text-gray-600 hover:text-blue-600 text-sm md:text-base">Confidentialité</a>
-              <a href="#" className="text-gray-600 hover:text-blue-600 text-sm md:text-base">Accessibilité</a>
-            </div>
+            
           </div>
           
           <div className="pt-6 md:pt-8 border-t border-gray-200 text-center">
