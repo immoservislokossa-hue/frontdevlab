@@ -619,35 +619,8 @@ export default function ChatbotInterface({
         )}
       </div>
 
-      {/* Pied de page avec infos */}
-      <div className="mt-4 pt-4 border-t border-blue-100">
-        <div className="flex items-center justify-between text-xs text-gray-500">
-          <div className="flex items-center gap-1">
-            <div className="relative w-5 h-5 rounded-full overflow-hidden border border-blue-300">
-              {botAvatar ? (
-                <Image
-                  src={botAvatar}
-                  alt={botName}
-                  fill
-                  className="object-cover"
-                  sizes="20px"
-                />
-              ) : (
-                <div className="w-full h-full bg-blue-600 flex items-center justify-center">
-                  <CheckCircle className="w-3 h-3 text-white" />
-                </div>
-              )}
-            </div>
-            <span>API: {apiEndpoint.includes('5001') ? 'Connecté' : 'Configuré'}</span>
-          </div>
-          <button
-            onClick={() => window.open(apiEndpoint, '_blank')}
-            className="text-blue-600 hover:text-blue-800 hover:underline"
-          >
-            Tester endpoint
-          </button>
-        </div>
+      
       </div>
-    </div>
+   
   );
 }
